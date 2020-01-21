@@ -1,3 +1,12 @@
+<?php
+  session_start();
+  
+    if (isset($_SESSION['alert'])){
+      echo $_SESSION['alert'];
+      session_unset();
+    }
+?>
+
 <!doctype html>
 <html lang="en">
   <head>
@@ -29,22 +38,23 @@
         <table class="table">
           <thead class="thead-dark">
             <tr>
-              <th scope="col">Music</th>
               <th scope="col">Artist</th>
-              <th scope="col">Album</th>
+              <th scope="col">Music name</th>
+              <th scope="col">Song</th>
 
             </tr>
           </thead>
             <tbody>
               <tr>
-                <th scope="row">João</th>
-                <td value="#">Viva La Mandioca <audio controls><source src="" type="audio/mpeg"></audio></td>
-                <td>Mandiocando</td>
+                <th scope="row">João Mandioca</th>
+                <td value="#">Viva La Mandioca </td>
+                <td><audio controls><source src="" type="audio/mpeg"></audio></td>
               </tr>
             </tbody>
         </table>
-        <form action="">
-          <input type="file" href="areaAdm.php" role="button" aria-disabled="true">
+        <form action="php/upload.php" method="POST" enctype="multipart/form-data">
+          <input type="file" href="areaAdm.php" role="button" aria-disabled="true" name="file">
+          <input type="submit" value="Send" name="send_file">
         </form>
       </div>
     </div>
@@ -54,4 +64,6 @@
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
   </body>
+
+  
 </html>
