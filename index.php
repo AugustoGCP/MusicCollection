@@ -7,11 +7,22 @@
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="style/style.css">
 
     <title>Music Collection - DashBoard</title>
   </head>
   <body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand float-left" href="#">Music Collection</a>    
+    </nav>
 
+
+        <form class="frm_box" action="http://www.curtamais.com.br/uploads/conteudos/991f4348e7c5ce78e6509f4d4daa6435.jpg"> 
+            <h1>Sing In</h1>
+            <input type="text" placeholder="User" id="usr"><br/>
+            <input type="password" placeholder="Password"><br/>
+            <input type="submit" value="Confirm">
+        </form>
     
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->

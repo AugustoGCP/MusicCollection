@@ -12,31 +12,42 @@
   </head>
   <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <a class="navbar-brand" href="#">Music Collection</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <a class="navbar-brand" href="#">Music Collection</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
-        </button>
-
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav mr-auto">
-            <li class="nav-item active">
-                <a class="nav-link" href="#">Home</a>
-            </li>
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Collections
-                </a>
-                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="#">Music</a>
-                    <a class="dropdown-item" href="#">Artist</a>
-                    <a class="dropdown-item" href="#">Album</a>
-                </div>
-            </li>
-        </ul>
-    </div>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+        <div class="navbar-nav">
+          <a class="nav-item nav-link active" href="#">Musics <span class="sr-only">(current)</span></a>
+          <a class="nav-item nav-link" href="#">Artists</a>
+          <a class="nav-item nav-link" href="#">Albums</a>
+        </div>
+      </div>
     </nav>
-        
-    
+    <div class="cardSobre m-lg-3">
+      <div class="text-center">
+        <table class="table">
+          <thead class="thead-dark">
+            <tr>
+              <th scope="col">Music</th>
+              <th scope="col">Artist</th>
+              <th scope="col">Album</th>
+
+            </tr>
+          </thead>
+            <tbody>
+              <tr>
+                <th scope="row">João</th>
+                <td value="#">Viva La Mandioca <audio controls><source src="" type="audio/mpeg"></audio></td>
+                <td>Mandiocando</td>
+              </tr>
+            </tbody>
+        </table>
+        <form action="">
+          <input type="file" href="areaAdm.php" role="button" aria-disabled="true">
+        </form>
+      </div>
+    </div>
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
