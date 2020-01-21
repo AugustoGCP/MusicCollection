@@ -12,10 +12,9 @@
 
         if ($extension === "mp3"){
             $directory = "files/";
-            $target_file = $directory . basename($_FILES['file']['name'])
+            $target_file = $directory . basename($_FILES['file']['name']);
             $tmp = $_FILES['file']['tmp_name'];
-            //$new_name = uniqid().$extension;
-
+            
             if (move_uploaded_file($tmp, $target_file)){
                 $_SESSION['alert'] = "<script>alert('Succssesfully done!')</script>";
                 header("Location: ../dashboard.php");
