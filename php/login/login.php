@@ -8,10 +8,10 @@
 
     if ( (empty($user)) || (empty($password)) ){
 
-        $_SESSION['alert'] = "<script>alert('Some camp was filled incorrect.')</script>";
+        $_SESSION['alert'] = "<script>alert('Some field was filled incorrect.')</script>";
         header("Location: ../../index.php");
 
-        // echo "bloco 3";
+        // echo "bloco 1";
 
     }else{
 
@@ -22,14 +22,14 @@
             $dates = mysqli_num_rows($result);
 
             if ( $dates === 1){
-                $_SESSION['usr'] = $user;
-                header('Location: ../../dashboard.php');
+                $_SESSION['cod_usr'] = $user;
+                header('Location: ../../include/artist.php');
                 
 
                 // echo "bloco 2";
                 
             }else{
-                $_SESSION['alert'] = "<script>alert('Sorry, we couldn't find an account with this username. Please check you're using the right username and try again.')</script>";
+                $_SESSION['alert'] = "<script>alert('Sorry, we couldnt find an account with this username. Please check youre using the right username and try again.')</script>";
                 header("Location: ../../index.php");
 
                 // echo "bloco 3";
