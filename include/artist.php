@@ -75,7 +75,7 @@
                 ?>
                     <tr>                        
                         <td><?php echo $data['artist'];?></td>
-                        <td><a href="https://twitter.com/@<?php echo $data['twitter'];?>">@<?php echo $data['twitter'];?></a></td>
+                        <td><a href="https://twitter.com/@<?php echo $data['twitter'];?>" target="blanck">@<?php echo $data['twitter'];?></a></td>
                     </tr>
 
                 <?php }?>
