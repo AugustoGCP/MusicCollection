@@ -1,3 +1,28 @@
+<?php
+
+    include "../php/connection.php";
+
+    session_cache_expire(30);
+    session_start();
+
+    if (empty($_SESSION['usr'])){
+        header("Location: ../index.php");
+    }
+
+    if (isset($_SESSION['alert'])){
+        echo $_SESSION['alert'];
+        unset($_SESSION['alert']);
+    }
+
+    $usr = $_SESSION['usr'];
+    $sql = "select * from tb_users where usr = '$usr'";
+    $result = mysqli_query($conn, $sql);
+    $data = $result->fetch_array();
+
+    $cod_usr = $data['cod_usr'];
+
+?>
+
 <!doctype html>
 <html lang="en">
   <head>
@@ -42,30 +67,67 @@
             </div>
         </nav>
 
+        
         <div class="cardSobre m-lg-3">
                 <div class="container">
                     <div class="accordion" id="accordionExample">
                         <div class="card">
+
+                            <?php
+                            
+                                $sql = "select * from tb_artists where usr = $cod_usr";
+                                $result = mysqli_query($conn, $sql);
+
+                                                                                            
+                                while ($data = $result->fetch_array() ){
+                                    
+                                    $artist = $data['artist'];
+                            ?>
+                            
                             <div class="card-header bg-dark" id="headingOne">
                                 <h5 class="mb-0">
-                                    <button class="btn btn-dark" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                                    Albums criados pelo usuario do Artista 
+                                    <button class="btn btn-dark" type="button" data-toggle="collapse" data-target="#<?php echo $data['twitter'];?>" aria-expanded="true" aria-controls="collapseOne">
+                                    <?php echo $data['artist'];?>
                                     </button>
                                     <a href="#" class="btn btn-light float-right">Visit Artist</a>
                                 </h5>
                             </div>
-                            <div id="collapseOne" class="collapse " aria-labelledby="headingOne" data-parent="#accordionExample">
-                                <div class="card-body">
-                                    <div class="card" style="width: 18rem;">
-                                        <img class="card-img-top" src=".../100px180/" alt="Imagem de capa do card">
+
+                            <div id="<?php echo $data['twitter'];?>" class="collapse " aria-labelledby="headingOne" data-parent="#accordionExample"> 
+                                <div class = "row">
+                                    <!-- <div class="card-body">
+                                        <div class="col-sm-6"> -->
+
+                            <?php
+                                
+                                $sql_2 = "select * from tb_albums inner join tb_artists on tb_albums.artist = tb_artists.cod_artist where tb_artists.usr = $cod_usr and tb_artists.deactivate = 1 and tb_artists.artist = '$artist'";
+                                $result_2 = mysqli_query($conn, $sql_2); 
+
+                                while ($data_2 = $result_2->fetch_array()){         
+
+                            ?>
+
+                            
+                                    <div class="card" style="width: 18rem; margin: 30px 0px 50px 25px !important;">
+                                        <img class="card-img-top" src="<?php echo $data_2['img_cover'];?>" alt="Imagem de capa do card">
                                         <div class="card-body">
-                                            <h5 class="card-title">Título do card</h5>
-                                            <p class="card-text">Um exemplo de texto rápido para construir o título do card e fazer preencher o conteúdo do card.</p>
-                                            <a href="#" class="btn btn-primary">Visitar</a>
+                                            <h5 class="card-title"><?php echo $data_2['album'];?></h5>
+                                            <p class="card-text"><?php echo $data_2['year_album'];?></p>
+                                            <p class="card-text"><?php echo $data_2['about'];?></p>
+                                            <a href="#" class="btn btn-primary">Visit</a>
                                         </div>
                                     </div>
+                               
+
+                                <?php  }?>
+                                <!-- </div>
+                                    </div> -->
                                 </div>
                             </div>
+
+                            <?php }?>
+
+
                         </div>
                     </div>                 
                 </div>

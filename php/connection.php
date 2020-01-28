@@ -11,6 +11,6 @@
     if (!$conn){
         die ("Connection error".mysqli_connection_error());
     }else{
-        // echo "Connection succssesfully done!";
+        //echo "Connection succssesfully done!";
     }
 ?>

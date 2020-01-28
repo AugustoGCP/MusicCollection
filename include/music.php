@@ -4,12 +4,12 @@
   session_cache_expire(30);
   session_start();
   
-  if (empty($_SESSION['cod_usr'])){
+  if (empty($_SESSION['usr'])){
     header("Location: ../index.php");
   }
 
-  $usr = $_SESSION['cod_usr']; 
-  $sql = "select * from tb_users inner join tb_musics on tb_musics.usr = tb_users.cod_usr where tb_users.usr = '$usr' and tb_musics.deleted = 0";
+  $usr = $_SESSION['usr']; 
+  $sql = "select * from tb_users inner join tb_musics on tb_musics.usr_msc = tb_users.cod_usr where tb_users.usr = '$usr' and tb_musics.deactive = 1";
   $result = mysqli_query($conn, $sql);    
     
 ?>
@@ -69,13 +69,21 @@
             </tr>
           </thead>
             <tbody>
-            <?php while($dados = $result->fetch_array()){?>
+            <?php
+             
+             $cod = 1;
+
+             while( $date = $result->fetch_array() ){
+               
+            ?>
               <tr>
-                <th scope="row"><?php echo $dados['artist'];?></th>
-                <td value="#"><?php echo $dados['music']?></td>
-                <td><audio controls><source src="<?php echo $dados['path']?>" type="audio/mpeg"></audio></td>
+                <th scope="row"><?php echo $cod;?></th>
+                <td value="#"><?php echo $date['music']?></td>
+                <td><audio controls><source src="<?php echo $date['path']?>" type="audio/mpeg"></audio></td>
               </tr>   
-            <?php }?>          
+            <?php 
+              $cod += 1;}
+            ?>          
             </tbody>
         </table>
       </div>

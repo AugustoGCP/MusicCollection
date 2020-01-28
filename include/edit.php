@@ -1,8 +1,27 @@
 <?php
 
+    include "../php/connection.php";
+
     session_cache_expire(30);
     session_start();
     
+    if (empty($_SESSION['usr'])){
+        header("Location: ../index.php");
+    }
+    
+    if (isset($_SESSION['alert'])){
+        echo $_SESSION['alert'];
+        unset($_SESSION['alert']);
+    } 
+
+    
+
+    $usr = $_SESSION['usr'];
+    $sql = "select * from tb_users where usr = '$usr'";
+    $result = mysqli_query($conn, $sql);
+    $date = $result->fetch_array();
+    $cod_usr = $date['cod_usr'];
+
 ?>
 
 <!doctype html>
@@ -86,14 +105,14 @@
                             <form action="../php/maintence/edit_artist.php" method="POST">
                                 <div class="form-group">
                                     <label for="artist_name">Artist name:</label>
-                                    <input type="text" class="form-control" id="artist_name" name="artist_name" placeholder="The artist name..." required>
+                                    <input type="text" class="form-control" id="artist_name" name="artist_name" placeholder="The artist name...">
                                 </div>                      
                                 <label for="validationTooltipUsername">Twitter</label>
                                 <div class="input-group">
                                     <div class="input-group-prepend">
                                         <span class="input-group-text" id="validationTooltipUsernamePrepend">@</span>
                                     </div>
-                                    <input type="text" class="form-control" id="twitter_handle" name="twitter_handle" placeholder="Twitter handle" aria-describedby="twitter_handle" required>       
+                                    <input type="text" class="form-control" id="twitter_handle" name="twitter_name" placeholder="Twitter handle" aria-describedby="twitter_handle">       
                                 </div><br>
                                 <div class="form-group">
                                     <label for="about_artist">Write about this artist</label>
@@ -103,9 +122,22 @@
                                 <p class="h4"> Deactivate Artist</p>
                                 <select class="form-control form-control-md" name="disable_artist">
                                     <option desabled>Select the artist</option>
+                                    
+                                    <?php 
+
+                                        $sql = "SELECT * FROM `tb_artists` WHERE usr = $cod_usr and deactivate = 1";
+                                        $result = mysqli_query($conn, $sql);
+                                        while ($data = $result->fetch_array()){
+
+                                    ?>
+
+                                    <option value="<?php echo $data['artist'];?>"><?php echo $data['artist'];?></option>
+
+                                    <?php  }?>                                   
+
                                 </select></br>
                                 <div class="form-group form-check">
-                                    <input type="checkbox" class="form-check-input" id="deactivate" name="deactivate">
+                                    <input type="checkbox" class="form-check-input" id="deactive" name="deactive">
                                     <label class="form-check-label" for="deactivate">Deactive this artist</label>
                                 </div>
                                 <button type="submit" class="btn btn-primary">Send</button>
@@ -117,36 +149,47 @@
                             <p class="h2"> Edit Albums</p>
                             <hr>
                             <p class="h4">Create Album</p>
-                            <div class="form-group">
-                                <label for="album_name">Album name:</label>
-                                <input type="text" class="form-control" id="album_name" placeholder="The album name...">
-                            </div>
-                            <select class="form-control form-control-md">
-                                <label for="about_artist">Write about this artist</label>
-                                <option desabeled>Select the artist</option>
-                            </select><br>
-                            <div class="form-row align-items-center">
-                                <div class="col-auto my-1">
-                                    <label>Album year</label>
-                                    <select class="custom-select mr-sm-2" id="inlineFormCustomSelect">
-                                        <option selected>Choice...</option>
-                                        <?php 
-
-                                            $year = 1930;
-                                            $current_year = Date("Y");
-                                                
-                                            while( $year <= $current_year){                                        
-                                        ?>
-                                        <option value="<?php echo $year;?>"><?php echo $year;?></option>
-                                        <?php $year += 1;}?>
-                                    </select>
+                            <form action="../php/maintence/edit_album.php" method="POST" enctype="multipart/form-data"> 
+                                <div class="form-group">
+                                    <label for="album_name">Album name:</label>
+                                    <input type="text" class="form-control" id="album_name" name="album_name" placeholder="The album name...">
                                 </div>
-                            </div><br>                               
-                            <form>
+                                <select class="form-control form-control-md" name="cod_artist">
+                                    <option disabeled>Select the artist</option>
+                                    <?php 
+
+                                        $sql = "SELECT * FROM `tb_artists` WHERE usr = $cod_usr and deactivate = 1";
+                                        $result = mysqli_query($conn, $sql);
+                                        while ($data = $result->fetch_array()){
+
+                                    ?>
+                                    
+                                    <option value="<?php echo $data['cod_artist'];?>"><?php echo $data['artist'];?></option>
+                                    
+                                    <?php }?>
+                                </select><br>
+                                <div class="form-row align-items-center">
+                                    <div class="col-auto my-1">
+                                        <label>Album year</label>
+                                        <select class="custom-select mr-sm-2" id="inlineFormCustomSelect" name="year">
+                                            <option disabled selected>Choice...</option>
+                                            <?php 
+
+                                                $year = 1930;
+                                                $current_year = Date("Y");
+                                                    
+                                                while( $year <= $current_year){                                        
+                                            ?>
+                                            <option value="<?php echo $year;?>"><?php echo $year;?></option>
+                                            <?php $year += 1;}?>
+                                        </select>
+                                    </div>
+                                </div><br>                               
                                 <div class="form-group">
                                     <label for="exampleFormControlFile1">Upload the cover album</label>
-                                    <input type="file" class="form-control-file" id="exampleFormControlFile1">
+                                    <input type="file" class="form-control-file" id="exampleFormControlFile1" name="file">
                                 </div>
+                                <button type="submit" class="btn btn-primary" name="send_file">Send</button>
                             </form>
                         </div>
                     </div>  
@@ -155,18 +198,47 @@
                             <p class="h2">Edit Musics</p>
                             <hr>
                             <p class="h4">Insert song(s) in album</p>
-                            <select class="form-control form-control-md">
-                                <label for="about_artist">Write about this artist</label>
-                                <option desabeled>Select the artist</option>
-                            </select><br>
-                            <select class="form-control form-control-md">
-                                <label for="about_artist">Write about this artist</label>
-                                <option desabeled>Select the album</option>
-                            </select><br>
-                            <form action="../php/upload.php" method="POST" enctype="multipart/form-data">
-                                <label for="exampleFormControlFile1">Upload the musics' album</label>
-                                <small id="emailHelp" class="form-text text-muted">Please, use audio file nominated only with the name song.</small>
-                                <input type="file" class="form-control-file" id="exampleFormControlFile1">
+                            <form action="../php/maintence/edit_music.php" method="POST" enctype="multipart/form-data">
+                                <select class="form-control form-control-md" id="cod_artist" name="cod_artist"> 
+                                    <option disabled selected>Select the artist</option>
+                                <?php
+
+                                    $sql = "select * from tb_artists where usr = $cod_usr and deactivate = 1";
+                                    $result = mysqli_query($conn, $sql);
+                                    
+                                    while ($data = $result->fetch_array()){
+
+                                ?>
+                                    <option value = "<?php echo $data['cod_artist']?>"><?php echo $data['artist']?></option>
+
+                                <?php }?>
+                                    
+                                </select><br>
+                                <select class="form-control form-control-md" name="cod_album">
+                                    <option disabled selected>Select the album</option>
+
+                                    <script>
+
+                                    </script>
+                                        
+                                    <?php
+                                    
+                                        $sql = "select * from tb_albums";
+                                        $result = mysqli_query($conn, $sql);
+
+                                        while ($data = $result->fetch_array()){
+                                    
+                                    ?>
+
+                                    <option value="<?php echo $data['cod_album'];?>"><?php echo $data['album'];?></option>
+
+                                        <?php  }?>
+
+                                </select><br>
+                                    <label for="exampleFormControlFile1">Upload the musics' album</label>
+                                    <small id="emailHelp" class="form-text text-muted">Please, use audio file nominated only with the name's song.</small>
+                                    <input type="file" class="form-control-file" id="exampleFormControlFile1" name="file"><br>
+                                    <button type="submit" class="btn btn-primary" name="send_file">Send</button>
                             </form>
                         </div>
                     </div>                     
@@ -180,13 +252,4 @@
         <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
     </body>
-
-    <?
-
-        if (isset($_SESSION['alert'])){
-            echo $_SESSION['alert'];
-            session_unset();
-        }                                          
-    
-    ?>
   </html>

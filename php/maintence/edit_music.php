@@ -1,14 +1,14 @@
 <?php
 
-    include "connection.php";
+    include "../connection.php";
     session_start();
-    globals_start()
 
     $usr = $_SESSION['usr'];
 
     $send_file = $_POST['send_file'];
-    $pasta = "files/";
-    $file_array = explode("-", $_FILES['file']['name']);
+    $cod_artist = $_POST['cod_artist'];
+    $cod_album = $_POST['cod_album'];
+    $file_name = $_FILES['file']['name'];
     // var_dump($file_name);
 
     $date = Date("Y-m-d");
@@ -19,8 +19,6 @@
 
     $cod_usr = $data['cod_usr'];
 
-    $directory = "files/";
-    $target_file = $directory . basename($_FILES['file']['name']);
     
 
     if (isset($send_file)){
@@ -28,33 +26,31 @@
 
         if ($extension === "mp3"){
 
-            $directory = "files/";
+            $directory = "../files/audio/";
             $target_file = $directory . basename($_FILES['file']['name']);
             $tmp = $_FILES['file']['tmp_name'];
             
-            $artist_name = $file_array[0];
-            $music_name = $file_array[1];
-            $file_path = "php/$target_file";
+            $file_path = "../php/files/audio/$file_name";
 
-            $sql = "insert into tb_musics (usr, music, artist, path, date_insert, deleted) values ($cod_usr, '$music_name', '$artist_name', '$file_path', '$date', 0)";
+            $sql = "insert into tb_musics (music, artist_msc, album, usr_msc, path, deactive, date_create) values ('$file_name', $cod_artist, $cod_album, $cod_usr, '$file_path', 1, '$date')";
             
             if ( (move_uploaded_file($tmp, $target_file)) && (mysqli_query($conn, $sql)) ){
 
                 $_SESSION['alert'] = "<script>alert('Succssesfully done!')</script>";
-                header("Location: ../dashboard.php");
+                header("Location: ../../include/edit.php");
                 
                 
             }else{
                 $_SESSION['alert'] = "<script>alert('Something wrong are happing. Please try late.')</script>";
-                header("Location: ../dashboard.php");
+                header("Location: ../../include/edit.php");
             }
         }else{
             $_SESSION['alert'] = "<script>alert('You're trying upload a wrong extension. Please use only .mp3')</script>";
-            header("Location: ../dashboard.php");
+            header("Location: ../../include/edit.php");
         }
     }else{
         $_SESSION['alert'] = "<script>alert('It was not possible verify a file.')</script>";
-        header("Location: ../dashboard.php");
+        header("Location: ../../include/edit.php");
     }
 
 ?>

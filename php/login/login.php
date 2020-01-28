@@ -17,16 +17,16 @@
 
         if ( (isset($user)) && (isset($password)) ){
 
-            $sql = "SELECT * FROM `tb_users` WHERE usr = '$user' and PASSWORD = $password";    
+            $sql = "select * from `tb_users` WHERE usr = '$user' and PASSWORD = $password";    
             $result = mysqli_query($conn, $sql) or die ($conn);
             $dates = mysqli_num_rows($result);
 
             if ( $dates === 1){
-                $_SESSION['cod_usr'] = $user;
+                $_SESSION['usr'] = $user;
                 header('Location: ../../include/artist.php');
                 
 
-                // echo "bloco 2";
+                // echo $_SESSION['usr'];
                 
             }else{
                 $_SESSION['alert'] = "<script>alert('Sorry, we couldnt find an account with this username. Please check youre using the right username and try again.')</script>";
