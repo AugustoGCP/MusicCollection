@@ -1,7 +1,17 @@
 <?php
 
+    include "../php/connection.php.";
+
     session_cache_expire(30);
     session_start();
+
+    $usr = $_SESSION['usr'];
+
+    $sql = "select * from tb_users where usr = '$usr'";
+    $result = mysqli_query($conn, $sql);
+    $data = $result->fetch_array();
+
+    $cod_usr = $data['cod_usr'];
 
 ?>
 
@@ -47,6 +57,31 @@
                 </div>
             </div>
         </nav>
+
+        <div class="container">
+            <table class="table">
+                <thead>
+                    <tr>                    
+                        <th scope="col">Artist</th>
+                        <th scope="col">Twitter Handle</th>
+                    </tr>
+                </thead>
+                <tbody>
+                <?php
+
+                    $sql = "select * from tb_artists where usr = '$cod_usr'";
+                    $result = mysqli_query($conn, $sql);
+                    while ($data = $result->fetch_array()){
+                ?>
+                    <tr>                        
+                        <td><?php echo $data['artist'];?></td>
+                        <td>@<?php echo $data['twitter'];?></td>
+                    </tr>
+
+                <?php }?>
+                </tbody>
+            </table>
+        </div>
 
         
 

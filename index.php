@@ -39,7 +39,7 @@
     
     if (isset($_SESSION['alert'])){
       echo $_SESSION['alert'];
-      session_unset();
+      unset($_SESSION['alert']);
     }
 
   ?>
