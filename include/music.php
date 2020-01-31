@@ -8,8 +8,21 @@
     header("Location: ../index.php");
   }
 
-  $usr = $_SESSION['usr']; 
-  $sql = "select * from tb_users inner join tb_musics on tb_musics.usr_msc = tb_users.cod_usr where tb_users.usr = '$usr' and tb_musics.deactive = 1";
+  $usr = $_SESSION['usr'];
+
+  $sql = "select * from tb_users where usr = '$usr'";
+  $result = mysqli_query($conn, $sql);
+  $data = $result->fetch_array();
+
+  $cod_usr = $data['cod_usr'];
+
+
+  $sql = "select * from tb_users inner join tb_musics on tb_musics.usr_msc = tb_users.cod_usr 
+
+          inner join tb_artists on tb_musics.artist_msc = tb_artists.cod_artist
+
+          where tb_users.usr = '$usr' and tb_musics.deactive = 1 and tb_artists.usr = $cod_usr order BY tb_artists.artist ASC";
+
   $result = mysqli_query($conn, $sql);    
     
 ?>
@@ -71,18 +84,19 @@
             <tbody>
             <?php
              
-             $cod = 1;
+            //  $cod = 1;
 
-             while( $date = $result->fetch_array() ){
+             while( $data = $result->fetch_array() ){
                
             ?>
               <tr>
-                <th scope="row"><?php echo $cod;?></th>
-                <td value="#"><?php echo $date['music']?></td>
-                <td><audio controls><source src="<?php echo $date['path']?>" type="audio/mpeg"></audio></td>
+                <th scope="row"><?php echo $data['artist'];?></th>
+                <td value="#"><?php echo $data['music'];?></td>
+                <!-- <td><?php echo $data['']?></td> -->
+                <td><audio controls><source src="<?php echo $data['path'];?>" type="audio/mpeg"></audio></td>
               </tr>   
             <?php 
-              $cod += 1;}
+              }
             ?>          
             </tbody>
         </table>

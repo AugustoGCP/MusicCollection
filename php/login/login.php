@@ -17,7 +17,7 @@
 
         if ( (isset($user)) && (isset($password)) ){
 
-            $sql = "select * from `tb_users` WHERE usr = '$user' and PASSWORD = $password";    
+            $sql = "select * from `tb_users` WHERE usr = '$user' and PASSWORD = '$password'";    
             $result = mysqli_query($conn, $sql) or die ($conn);
             $dates = mysqli_num_rows($result);
 

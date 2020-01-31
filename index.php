@@ -18,7 +18,7 @@
   </head>
   <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <a class="navbar-brand float-left" href="#">Music Collection</a>    
+        <a class="navbar-brand float-left" href="#">Sing In - Music Collection</a>    
     </nav>
 
 
@@ -26,7 +26,8 @@
             <h1>Sing In</h1>
             <input type="text" placeholder="User" name="usr"><br/>
             <input type="password" placeholder="Password" name="password"><br/>
-            <input type="submit" value="Confirm">
+            <input type="submit" value="Confirm"><br>
+            <button type="button" class="btn btn-outline-light"><a href="include/sing_up.php">Sing up</a></button>
         </form>
     
     <!-- Optional JavaScript -->

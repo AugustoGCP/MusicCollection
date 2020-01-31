@@ -5,6 +5,10 @@
     session_cache_expire(30);
     session_start();
 
+    if (empty($_SESSION['usr'])){
+        header("Location: ../index.php");
+    }
+
     $usr = $_SESSION['usr'];
 
     $sql = "select * from tb_users where usr = '$usr'";
