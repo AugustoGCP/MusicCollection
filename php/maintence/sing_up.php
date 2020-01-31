@@ -14,7 +14,7 @@
 
         mkdir("../../usr/$user",0777, true);
 
-        $dir_created = fopen("../../usr/$user/profile.php", "w");
+        $dir_created = fopen("../../usr/$user/profile_$user.php", "w");
 
         fwrite($dir_created, $data_html_profile);
 
@@ -22,7 +22,7 @@
         
         $_SESSION['alert'] = "<script>alert('Password created sucessfully')</script>";
 
-        header("Location: ../../usr/$user/profile.php");
+        header("Location: ../../usr/$user/profile_$user.php");
 
     }else{
 
