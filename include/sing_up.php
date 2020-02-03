@@ -1,3 +1,14 @@
+<?php
+
+  session_start();
+
+  if (isset($_SESSION['alert'])){
+    echo $_SESSION['alert'];
+    unset($_SESSION['alert']);
+  }
+
+?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
   <head>
@@ -13,7 +24,7 @@
   <body>
 
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <a class="navbar-brand float-left" href="#">Music Collection</a>    
+        <a class="navbar-brand float-left" href="../index.php">Music Collection</a>    
     </nav>
     <script>
       $('.input-group.date').datepicker({format: "dd/mm/yyyy"});
@@ -24,7 +35,7 @@
       <form action="../php/maintence/sing_up.php" method="POST">
           <input type="text" name="full_name" placeholder = "Full name...">
           <input type="text" name = "user" placeholder = "Username">
-          <input type="password" name="password" placeholder=><br>
+          <input type="text" name="password" placeholder="Password"><br>
           <label for="birth">Birth day</label>        
           <div class="input-group date" data-date-format="dd/mm/yyyy">
             <input  type="date" class="form-control" placeholder="dd/mm/yyyy" name="birth">

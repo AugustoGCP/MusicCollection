@@ -26,11 +26,11 @@
 
         if ($extension === "mp3"){
 
-            $directory = "../files/audio/";
+            $directory = "../../usr/$usr/audio/";
             $target_file = $directory . basename($_FILES['file']['name']);
             $tmp = $_FILES['file']['tmp_name'];
             
-            $file_path = "../php/files/audio/$file_name";
+            $file_path = "../usr/$usr/audio/$file_name";
 
             $sql = "insert into tb_musics (music, artist_msc, album, usr_msc, path, deactive, date_create) values ('$file_name', $cod_artist, $cod_album, $cod_usr, '$file_path', 1, '$date')";
             

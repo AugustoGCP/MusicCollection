@@ -1,3 +1,8 @@
+
+<?php
+  include '../../php/maintence/alert.php';
+?>
+
 <!DOCTYPE html>
 <html lang='en'>
   <head>
@@ -8,10 +13,42 @@
     <!-- Bootstrap CSS -->
     <link rel='stylesheet' href='https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css' integrity='sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO' crossorigin='anonymous'>
 
-    <title>Olá, mundo!</title>
+    <title><?php echo $usr;?> - Profile</title>
   </head>
   <body>
-    <h1>Olá, mundo!</h1>
+    <nav class='navbar navbar-expand-lg navbar-dark bg-dark'>
+      <a class='navbar-brand' href='#'>Music Collection</a>
+      <button class='navbar-toggler' type='button' data-toggle='collapse' data-target='#navbarNavAltMarkup' aria-controls='navbarNavAltMarkup' aria-expanded='false' aria-label='Toggle navigation'>
+        <span class='navbar-toggler-icon'></span>
+      </button>
+      <div class='collapse navbar-collapse' id='navbarNavAltMarkup'>
+        <div class='navbar-nav'>
+          <a class='nav-item nav-link' href='../../include/music.php'>Musics</a>
+          <a class='nav-item nav-link' href='../../include/artist.php'>Artists</a>
+          <a class='nav-item nav-link' href='../../include/album.php'>Albums</a>
+          <a class='nav-item nav-link' href='../../include/edit.php'>Edit</a>          
+        </div>
+      </div>
+
+      <div class="container">
+        <div class="dropdown">
+          <button class="btn btn-light dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Settings
+          </button>
+          <div class="dropdown-menu dropdown-menu-left" aria-labelledby="dropdownMenuButton">
+            <img class= "img-thumbnail rounded float-left" src="img/img_profile.jpg" style="max-width: 19% !important; padding: 0.10rem !important; margin-left: 5px !important;"/> <h6 class="dropdown-header " style="padding: 0rem !important; margin-left: 3rem !important;"> Singed with <br><strong><?php echo $usr;?></strong></h6>
+            <div class="dropdown-divider"></div>
+              <a class="dropdown-item" href="../usr/<?php echo $usr;?>/profile.php">Profile</a>
+              <a class="dropdown-item" href="#">Change password</a>
+              <div class="dropdown-divider"></div>
+              <form action="../../php/login/logout.php" method="POST">
+                <input class="dropdown-item" type="submit" value="Log Out">
+              </form> 
+            </div>
+          </div>
+        </div>
+    </nav>
+
 
     <!-- JavaScript (Opcional) -->
     <!-- jQuery primeiro, depois Popper.js, depois Bootstrap JS -->

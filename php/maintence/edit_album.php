@@ -26,10 +26,10 @@
 
         if (in_array($extension, $permission_extension )){
 
-            $directory = "../files/img/";
+            $directory = "../../usr/$usr/img/";
             $target_file = $directory . basename($_FILES['file']['name']);
             $tmp = $_FILES['file']['tmp_name'];
-            $file_path = "../php/files/img/". basename($_FILES['file']['name']);
+            $file_path = "../usr/$usr/img/". basename($_FILES['file']['name']);
 
             //var_dump($file_path);
 

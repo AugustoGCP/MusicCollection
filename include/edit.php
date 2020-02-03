@@ -17,26 +17,30 @@
     
 
     $usr = $_SESSION['usr'];
+
     $sql = "select * from tb_users where usr = '$usr'";
     $result = mysqli_query($conn, $sql);
-    $date = $result->fetch_array();
+    $date = mysqli_fetch_array($result);
     $cod_usr = $date['cod_usr'];
 
 ?>
 
 <!doctype html>
 <html lang="en">
-  <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <head>
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 
-    <title>Music Collection - Artists</title>
+        <title>Music Collection - Artists</title>
     </head>
+
     <body>
+
+
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
             <a class="navbar-brand" href="#">Music Collection</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
@@ -57,7 +61,9 @@
                         Settings
                     </button>
                     <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                        <a class="dropdown-item" href="#">Profile</a>
+                        <img class= "img-thumbnail rounded float-left" src="../usr/<?php echo $usr;?>/img/img_profile.jpg" style="max-width: 19% !important; padding: 0.10rem !important; margin-left: 5px !important;"/> <h6 class="dropdown-header " style="padding: 0rem !important; margin-left: 3rem !important;"> Singed with <br><strong><?php echo $usr;?></strong></h6>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="../usr/<?php echo $usr;?>/profile.php">Profile</a>
                         <div class="btn-group dropright">
                             <button type="button" class="dropdown-item btn btn-light dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 
@@ -77,14 +83,22 @@
                                     <button type="submit" class="btn btn-primary">Entrar</button>
                                 </form>
                             </div>                          
-                        </div>                                                                         
+                        </div>
+
                         <div class="dropdown-divider"></div>
+
                         <form action="../php/login/logout.php" method="POST">
                             <input class="dropdown-item" type="submit" value="Log Out">
                         </form> 
+
                     </div>
                 </div>
-            </div>            
+            </div>
+            
+            <div class = "container">
+                <a href=""><img src="../img/user-friends-solid.svg" alt=""></a>
+
+            </div>
         </nav>
 
         <div class="cardSobre m-lg-3">

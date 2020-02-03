@@ -2,6 +2,11 @@
 
   session_start();
 
+  if(isset($_SESSION['alert'])){
+    echo $_SESSION['alert'];
+    unset($_SESSION['alert']);
+  }
+
 ?>
 <!doctype html>
 <html lang="en">
