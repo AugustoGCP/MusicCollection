@@ -1,3 +1,4 @@
+
 <?php
 
     include "../connection.php";
@@ -34,7 +35,7 @@
             //var_dump($file_path);
 
 
-            if ( !empty($_FILES['file'])) {
+            if (!empty($_FILES['file'])) {
 
                 $sql = "insert into tb_albums (album, artist, usr_album, img_cover, year_album) values ('$album', $cod_artist, $cod_usr, '$file_path', '$year')";
 

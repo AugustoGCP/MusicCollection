@@ -20,9 +20,6 @@
     $data = $result->fetch_array();
 
     $cod_usr = $data['cod_usr'];
-    $full_name = $data['full_name'];
-
-    $first_name = explode(" ", $full_name);
 
 ?>
 

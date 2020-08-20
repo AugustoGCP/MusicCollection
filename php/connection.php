@@ -1,5 +1,5 @@
 <?php
-    date_default_timezone_get('America/Sao_Paulo');
+    //date_default_timezone_get('America/Sao_Paulo');
 
     $server = "localhost";
     $user = "root";
