@@ -19,11 +19,24 @@
         
         public function Connect(){
 
-            $this->pdo = new PDO("");
+            try {
+
+                self::$pdo = new PDO("mysql:host={$this->getServer()};dbname={$this->getBase()}", $this->user, $this->getPassword());
+
+                echo "Conectado a {$this->getBase()} em {$this->getServer()} com sucesso.";
+
+            } catch (PDOException $pe) {
+
+                die("Não foi possível se conectar ao banco de dados {$this->getBase()} :" . $pe->getMessage());
+            }
 
         }
 
 
+        public function getPdo(){
+            return self::$pdo;
+
+        }
         private function setUser($user){
             $this->user = $user;
         }
