@@ -1,6 +1,6 @@
 <?php
 
-    include "../php/connection.php";
+    include "../php/connection.php"; 
 
     session_cache_expire(30);
     session_start();

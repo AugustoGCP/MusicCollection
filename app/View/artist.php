@@ -6,7 +6,7 @@
     session_start();
 
     if (empty($_SESSION['usr'])){
-        header("Location: ../index.php");
+        header("Location: ../../index.php");
     }
 
     // $usr = $_SESSION['usr'];
