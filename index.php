@@ -22,18 +22,18 @@
     <title>Music Collection - DashBoard</title>
   </head>
   <body>
+    
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <a class="navbar-brand float-left" href="#">Sing In - Music Collection</a>    
     </nav>
 
-
-        <form class="frm_box" action="php/login/login.php" method="POST"> 
-            <h1>Sing In</h1>
-            <input type="text" placeholder="User" name="usr"><br/>
-            <input type="password" placeholder="Password" name="password"><br/>
-            <input type="submit" value="Confirm"><br>
-            <button type="button" class="btn btn-outline-light"><a href="include/sing_up.php">Sing up</a></button>
-        </form>
+    <form class="frm_box" action="app/Model/login.php" method="POST"> 
+        <h1>Sing In</h1>
+        <input type="text" placeholder="User" name="usr"><br/>
+        <input type="password" placeholder="Password" name="password"><br/>
+        <input type="submit" value="Confirm"><br>
+        <button type="button" class="btn btn-outline-light"><a href="include/sing_up.php">Sing up</a></button>
+    </form>
     
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
@@ -41,12 +41,4 @@
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
   </body>
-  <?php
-    
-    if (isset($_SESSION['alert'])){
-      echo $_SESSION['alert'];
-      unset($_SESSION['alert']);
-    }
-
-  ?>
 </html>

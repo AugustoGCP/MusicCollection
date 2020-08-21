@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 20-Ago-2020 às 15:51
+-- Tempo de geração: 21-Ago-2020 às 13:58
 -- Versão do servidor: 10.4.11-MariaDB
 -- versão do PHP: 7.4.5
 
@@ -61,6 +61,19 @@ INSERT INTO `tb_artists` (`cod_artist`, `artist`, `twitter`, `about`, `deactivat
 -- --------------------------------------------------------
 
 --
+-- Estrutura da tabela `tb_frienship`
+--
+
+CREATE TABLE `tb_frienship` (
+  `cod_friendship` int(11) NOT NULL,
+  `ordered_friendship` int(11) NOT NULL,
+  `recived_friendship` int(11) NOT NULL,
+  `date_friendship` date NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
 -- Estrutura da tabela `tb_musics`
 --
 
@@ -114,6 +127,12 @@ ALTER TABLE `tb_artists`
   ADD KEY `usr` (`usr`);
 
 --
+-- Índices para tabela `tb_frienship`
+--
+ALTER TABLE `tb_frienship`
+  ADD PRIMARY KEY (`cod_friendship`);
+
+--
 -- Índices para tabela `tb_musics`
 --
 ALTER TABLE `tb_musics`
@@ -143,6 +162,12 @@ ALTER TABLE `tb_albums`
 --
 ALTER TABLE `tb_artists`
   MODIFY `cod_artist` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+
+--
+-- AUTO_INCREMENT de tabela `tb_frienship`
+--
+ALTER TABLE `tb_frienship`
+  MODIFY `cod_friendship` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de tabela `tb_musics`

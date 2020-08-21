@@ -19,11 +19,19 @@
         
         public function Connect(){
 
+            //Verify if attibute static PDO is set. Case it isn't, it will be setting with the construct PDO and return the instance.
+
             try {
 
-                self::$pdo = new PDO("mysql:host={$this->getServer()};dbname={$this->getBase()}", $this->user, $this->getPassword());
+                if (is_null(self::$pdo)){
 
-                echo "Conectado a {$this->getBase()} em {$this->getServer()} com sucesso.";
+                    self::$pdo = new PDO("mysql:host={$this->getServer()};dbname={$this->getBase()}", $this->user, $this->getPassword());
+
+                }
+
+                return self::$pdo;
+
+                //echo "Conectado a {$this->getBase()} em {$this->getServer()} com sucesso.";
 
             } catch (PDOException $pe) {
 
@@ -31,12 +39,7 @@
             }
 
         }
-
-
-        public function getPdo(){
-            return self::$pdo;
-
-        }
+        
         private function setUser($user){
             $this->user = $user;
         }

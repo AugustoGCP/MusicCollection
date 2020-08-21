@@ -23,8 +23,7 @@
 
             if ( $dates === 1){
                 $_SESSION['usr'] = $user;
-                header('Location: ../../include/artist.php');
-                
+                header('Location: ../../include/artist.php');                
 
                 // echo $_SESSION['usr'];
                 
