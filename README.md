@@ -1,8 +1,8 @@
 # Music Collection
 
 
-**Music Collection** é um projeto de uma _Rede Social._ Nela será possivel criar uma lista com seus **Artistas** favoritos, criar **Albuns** com a musicas dos **Artistas**,
-além, lógico, inserir musicas.
+**Music Collection** é um projeto de uma _Rede Social._ Nela será possivel criar uma lista com seus **Artistas** favoritos, criar **Albuns** com as musicas dos **Artistas**,
+e além, lógico, inserir musicas.
 
 A idiea inicial é que as pessoas possam ver os Artistas, Albuns e as Musicas cadastradas por seus amigos, e talvez conhecer pessoas com o mesmo de gosto musical.
 
