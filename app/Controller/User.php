@@ -6,6 +6,8 @@
  
         private $user;
         private $password;
+        private $full_name;
+        private $birth;
 
         public function __construct(){
 
@@ -24,9 +26,25 @@
                 
             }
 
+            if($resp == 4){
+
+                $getParams = func_get_args(0);
+
+                if(is_array($getParams)){
+
+                    
+                }
+
+            }
+
             //return $params;
 
         //    echo $resp;
+
+        }
+
+        public function createUser(){
+
 
         }
 
@@ -37,8 +55,8 @@
                 $pdo = $conn->Connect();
                 //$conn->getPdo()->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-                $sql = $pdo->prepare('SELECT usr FROM tb_users WHERE usr = :usr');
-                $sql->execute(array('usr' => $this->__get('user')));
+                $sql = $pdo->prepare('SELECT * FROM tb_users WHERE usr = :usr and passqord = :password');
+                $sql->execute(array('usr' => $this->__get('user'), 'password' => $this->__get('password')));
 
                 return $sql->rowCount();
 

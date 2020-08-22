@@ -1,6 +1,6 @@
 <?php
 
-    include "../php/connection.php"; 
+    include "../Controller/Connection.php"; 
 
     session_cache_expire(30);
     session_start();
@@ -14,12 +14,12 @@
         unset($_SESSION['alert']);
     }
 
-    $usr = $_SESSION['usr'];
-    $sql = "select * from tb_users where usr = '$usr'";
-    $result = mysqli_query($conn, $sql);
-    $data = $result->fetch_array();
+    // $usr = $_SESSION['usr'];
+    // $sql = "select * from tb_users where usr = '$usr'";
+    // $result = mysqli_query($conn, $sql);
+    // $data = $result->fetch_array();
 
-    $cod_usr = $data['cod_usr'];
+    // $cod_usr = $data['cod_usr'];
 
 ?>
 
@@ -56,12 +56,12 @@
                         Settings
                     </button>
                     <div class="dropdown-menu dropdown-menu-left" aria-labelledby="dropdownMenuButton">
-                        <img class= "img-thumbnail rounded float-left" src="../usr/<?php echo $usr;?>/img/img_profile.jpg" style="max-width: 19% !important; padding: 0.10rem !important; margin-left: 5px !important;"/> <h6 class="dropdown-header " style="padding: 0rem !important; margin-left: 3rem !important;"> Singed with <br><strong><?php echo $usr;?></strong></h6>
+                        <img class= "img-thumbnail rounded float-left" src="../usr/<?php //echo $usr;?>/img/img_profile.jpg" style="max-width: 19% !important; padding: 0.10rem !important; margin-left: 5px !important;"/> <h6 class="dropdown-header " style="padding: 0rem !important; margin-left: 3rem !important;"> Singed with <br><strong><?php //echo $usr;?></strong></h6>
                         <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="../usr/<?php echo $usr;?>/profile.php">Profile</a>
+                        <a class="dropdown-item" href="../usr/<?php //echo $usr;?>/profile.php">Profile</a>
                         <a class="dropdown-item" href="#">Change password</a>
                         <div class="dropdown-divider"></div>
-                        <form action="../php/login/logout.php" method="POST">
+                        <form action="../Model/logout.php" method="POST">
                             <input class="dropdown-item" type="submit" value="Log Out">
                         </form> 
                     </div>
@@ -77,57 +77,57 @@
 
                             <?php
                             
-                                $sql = "select * from tb_artists where usr = $cod_usr";
-                                $result = mysqli_query($conn, $sql);
+                                // $sql = "select * from tb_artists where usr = $cod_usr";
+                                // $result = mysqli_query($conn, $sql);
 
                                                                                             
-                                while ($data = $result->fetch_array() ){
+                                // while ($data = $result->fetch_array() ){
                                     
-                                    $artist = $data['artist'];
+                                //     $artist = $data['artist'];
                             ?>
                             
                             <div class="card-header bg-dark" id="headingOne">
                                 <h5 class="mb-0">
-                                    <button class="btn btn-dark" type="button" data-toggle="collapse" data-target="#<?php echo $data['twitter'];?>" aria-expanded="true" aria-controls="collapseOne">
-                                    <?php echo $data['artist'];?>
+                                    <button class="btn btn-dark" type="button" data-toggle="collapse" data-target="#<?php //echo $data['twitter'];?>" aria-expanded="true" aria-controls="collapseOne">
+                                    <?php //echo $data['artist'];?>
                                     </button>
                                     <a href="#" class="btn btn-light float-right">Visit Artist</a>
                                 </h5>
                             </div>
 
-                            <div id="<?php echo $data['twitter'];?>" class="collapse " aria-labelledby="headingOne" data-parent="#accordionExample"> 
+                            <div id="<?php //echo $data['twitter'];?>" class="collapse " aria-labelledby="headingOne" data-parent="#accordionExample"> 
                                 <div class = "row">
                                     <!-- <div class="card-body">
                                         <div class="col-sm-6"> -->
 
                             <?php
                                 
-                                $sql_2 = "select * from tb_albums inner join tb_artists on tb_albums.artist = tb_artists.cod_artist where tb_artists.usr = $cod_usr and tb_artists.deactivate = 1 and tb_artists.artist = '$artist'";
-                                $result_2 = mysqli_query($conn, $sql_2); 
+                                // $sql_2 = "select * from tb_albums inner join tb_artists on tb_albums.artist = tb_artists.cod_artist where tb_artists.usr = $cod_usr and tb_artists.deactivate = 1 and tb_artists.artist = '$artist'";
+                                // $result_2 = mysqli_query($conn, $sql_2); 
 
-                                while ($data_2 = $result_2->fetch_array()){         
+                                // while ($data_2 = $result_2->fetch_array()){         
 
                             ?>
 
                             
                                     <div class="card" style="width: 18rem; margin: 30px 0px 50px 25px !important;">
-                                        <img class="card-img-top" src="<?php echo $data_2['img_cover'];?>" alt="Imagem de capa do card">
+                                        <img class="card-img-top" src="<?php //echo $data_2['img_cover'];?>" alt="Imagem de capa do card">
                                         <div class="card-body">
-                                            <h5 class="card-title"><?php echo $data_2['album'];?></h5>
-                                            <p class="card-text"><?php echo $data_2['year_album'];?></p>
-                                            <p class="card-text"><?php echo $data_2['about'];?></p>
+                                            <h5 class="card-title"><?php //echo $data_2['album'];?></h5>
+                                            <p class="card-text"><?php //echo $data_2['year_album'];?></p>
+                                            <p class="card-text"><?php //echo $data_2['about'];?></p>
                                             <a href="#" class="btn btn-primary">Visit</a>
                                         </div>
                                     </div>
                                
 
-                                <?php  }?>
+                                <?php  //}?>
                                 <!-- </div>
                                     </div> -->
                                 </div>
                             </div>
 
-                            <?php }?>
+                            <?php //}?>
 
 
                         </div>

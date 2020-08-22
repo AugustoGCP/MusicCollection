@@ -1,6 +1,6 @@
 <?php
 
-    include "../php/connection.php";
+    include "../Controller/Connection.php";
 
     session_cache_expire(30);
     session_start();
@@ -16,12 +16,12 @@
 
     
 
-    $usr = $_SESSION['usr'];
+    // $usr = $_SESSION['usr'];
 
-    $sql = "select * from tb_users where usr = '$usr'";
-    $result = mysqli_query($conn, $sql);
-    $date = mysqli_fetch_array($result);
-    $cod_usr = $date['cod_usr'];
+    // $sql = "select * from tb_users where usr = '$usr'";
+    // $result = mysqli_query($conn, $sql);
+    // $date = mysqli_fetch_array($result);
+    // $cod_usr = $date['cod_usr'];
 
 ?>
 
@@ -61,9 +61,9 @@
                         Settings
                     </button>
                     <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                        <img class= "img-thumbnail rounded float-left" src="../usr/<?php echo $usr;?>/img/img_profile.jpg" style="max-width: 19% !important; padding: 0.10rem !important; margin-left: 5px !important;"/> <h6 class="dropdown-header " style="padding: 0rem !important; margin-left: 3rem !important;"> Singed with <br><strong><?php echo $usr;?></strong></h6>
+                        <img class= "img-thumbnail rounded float-left" src="../usr/<?php //echo $usr;?>/img/img_profile.jpg" style="max-width: 19% !important; padding: 0.10rem !important; margin-left: 5px !important;"/> <h6 class="dropdown-header " style="padding: 0rem !important; margin-left: 3rem !important;"> Singed with <br><strong><?php //echo $usr;?></strong></h6>
                         <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="../usr/<?php echo $usr;?>/profile.php">Profile</a>
+                        <a class="dropdown-item" href="../usr/<?php //echo $usr;?>/profile.php">Profile</a>
                         <div class="btn-group dropright">
                             <button type="button" class="dropdown-item btn btn-light dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 
@@ -87,7 +87,7 @@
 
                         <div class="dropdown-divider"></div>
 
-                        <form action="../php/login/logout.php" method="POST">
+                        <form action="../Model/logout.php" method="POST">
                             <input class="dropdown-item" type="submit" value="Log Out">
                         </form> 
 
@@ -139,15 +139,15 @@
                                     
                                     <?php 
 
-                                        $sql = "SELECT * FROM `tb_artists` WHERE usr = $cod_usr and deactivate = 1";
-                                        $result = mysqli_query($conn, $sql);
-                                        while ($data = $result->fetch_array()){
+                                        // $sql = "SELECT * FROM `tb_artists` WHERE usr = $cod_usr and deactivate = 1";
+                                        // $result = mysqli_query($conn, $sql);
+                                        // while ($data = $result->fetch_array()){
 
                                     ?>
 
-                                    <option value="<?php echo $data['artist'];?>"><?php echo $data['artist'];?></option>
+                                    <option value="<?php //echo $data['artist'];?>"><?php //echo $data['artist'];?></option>
 
-                                    <?php  }?>                                   
+                                    <?php  //}?>                                   
 
                                 </select></br>
                                 <div class="form-group form-check">
@@ -172,15 +172,15 @@
                                     <option disabeled>Select the artist</option>
                                     <?php 
 
-                                        $sql = "SELECT * FROM `tb_artists` WHERE usr = $cod_usr and deactivate = 1";
-                                        $result = mysqli_query($conn, $sql);
-                                        while ($data = $result->fetch_array()){
+                                        // $sql = "SELECT * FROM `tb_artists` WHERE usr = $cod_usr and deactivate = 1";
+                                        // $result = mysqli_query($conn, $sql);
+                                        // while ($data = $result->fetch_array()){
 
                                     ?>
                                     
-                                    <option value="<?php echo $data['cod_artist'];?>"><?php echo $data['artist'];?></option>
+                                    <option value="<?php //echo $data['cod_artist'];?>"><?php //echo $data['artist'];?></option>
                                     
-                                    <?php }?>
+                                    <?php //}?>
                                 </select><br>
                                 <div class="form-row align-items-center">
                                     <div class="col-auto my-1">
@@ -189,13 +189,13 @@
                                             <option disabled selected>Choice...</option>
                                             <?php 
 
-                                                $year = 1930;
-                                                $current_year = Date("Y");
+                                                // $year = 1930;
+                                                // $current_year = Date("Y");
                                                     
-                                                while( $year <= $current_year){                                        
+                                                // while( $year <= $current_year){                                        
                                             ?>
-                                            <option value="<?php echo $year;?>"><?php echo $year;?></option>
-                                            <?php $year += 1;}?>
+                                            <option value="<?php //echo $year;?>"><?php //echo $year;?></option>
+                                            <?php //$year += 1;}?>
                                         </select>
                                     </div>
                                 </div><br>                               
@@ -217,15 +217,15 @@
                                     <option disabled selected>Select the artist</option>
                                 <?php
 
-                                    $sql = "select * from tb_artists where usr = $cod_usr and deactivate = 1";
-                                    $result = mysqli_query($conn, $sql);
+                                    // $sql = "select * from tb_artists where usr = $cod_usr and deactivate = 1";
+                                    // $result = mysqli_query($conn, $sql);
                                     
-                                    while ($data = $result->fetch_array()){
+                                    // while ($data = $result->fetch_array()){
 
                                 ?>
-                                    <option value = "<?php echo $data['cod_artist']?>"><?php echo $data['artist']?></option>
+                                    <option value = "<?php //echo $data['cod_artist']?>"><?php //echo $data['artist']?></option>
 
-                                <?php }?>
+                                <?php //}?>
                                     
                                 </select><br>
                                 <select class="form-control form-control-md" name="cod_album">
@@ -237,16 +237,16 @@
                                         
                                     <?php
                                     
-                                        $sql = "select * from tb_albums";
-                                        $result = mysqli_query($conn, $sql);
+                                        // $sql = "select * from tb_albums";
+                                        // $result = mysqli_query($conn, $sql);
 
-                                        while ($data = $result->fetch_array()){
+                                        // while ($data = $result->fetch_array()){
                                     
                                     ?>
 
-                                    <option value="<?php echo $data['cod_album'];?>"><?php echo $data['album'];?></option>
+                                    <option value="<?php //echo $data['cod_album'];?>"><?php //echo $data['album'];?></option>
 
-                                        <?php  }?>
+                                        <?php  //}?>
 
                                 </select><br>
                                     <label for="exampleFormControlFile1">Upload the musics' album</label>

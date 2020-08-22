@@ -40,7 +40,7 @@
               <a class='dropdown-item' href='../usr/<?php echo $usr;?>/profile.php'>Profile</a>
               <a class='dropdown-item' href='#'>Change password</a>
               <div class='dropdown-divider'></div>
-              <form action='../../php/login/logout.php' method='POST'>
+              <form action='../../Model/logout.php' method='POST'>
                 <input class='dropdown-item' type='submit' value='Log Out'>
               </form> 
             </div>
