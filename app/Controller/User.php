@@ -7,27 +7,40 @@
         private $user;
         private $password;
 
-        public function __construct($user, $password){
+        public function __construct(){
 
-            $this->setUser($user);
-            $this->setPassword($password);
+            $resp = $numParams = func_num_args();
+
+            if($resp == 2){
+
+                $getParams = func_get_args(0);
+
+                if (is_array($getParams)){
+
+                    $this->__set('user',$getParams[0]);
+                    $this->__set('password',$getParams[1]);
+
+                }
+                
+            }
+
+            //return $params;
+
+        //    echo $resp;
 
         }
 
         public function Login(){
 
-            $user = $this->user;
-            $password = $this->password;
-
-            if ( (isset($user)) && (isset($password)) ){
+            if ( (isset($this->user)) && (isset($this->password)) ){
                 $conn = new Connection();
                 $pdo = $conn->Connect();
                 //$conn->getPdo()->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-                $stmt = $pdo->prepare('SELECT usr FROM tb_users WHERE usr = :usr');
-                $stmt->execute(array('usr' => $user));
+                $sql = $pdo->prepare('SELECT usr FROM tb_users WHERE usr = :usr');
+                $sql->execute(array('usr' => $this->__get('user')));
 
-                return $stmt->rowCount();
+                return $sql->rowCount();
 
             }
         }
@@ -39,29 +52,26 @@
             session_destroy();            
             return header("Location: ../../index.php");
 
+        } 
+        
+        public function musicList(){
+
+            $conn = new Connection();
+            $pdo = $conn->Connect();
+
+            $sql = $pdo->prepare('');
+
+            $sql = $pdo->prepare('select * from tb_users inner join tb_musics on tb_musics.usr_msc = tb_users.cod_usr inner join tb_artists on tb_musics.artist_msc = tb_artists.cod_artist where tb_users.usr = :id_usr and tb_musics.deactive = 1 and tb_artists.usr = $cod_usr order BY tb_artists.artist ASC');
+
         }
 
-
-        /*-----------  GETTER AND SETTER  -----------*/
-
-        private function setUser($user){
-
-            $this->user = $user;
+        public function __set($obj, $valor){
+            $this->$obj = $valor;
         }
 
-        private function getUser(){
+        public function __get($obj){
+            return $this->$obj;
 
-            return $this->user;
-        }
-
-        private function setPassword($password){
-
-            $this->password = $password;
-        }
-
-        private function getPassword(){
-
-            return $this->password;
         }
 
     }

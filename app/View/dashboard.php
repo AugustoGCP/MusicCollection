@@ -38,7 +38,7 @@
                     <a class="nav-item nav-link" href="artist.php">Artists</a>
                     <a class="nav-item nav-link" href="album.php">Albums <span class="sr-only">(current)</span></a>
                     <a class="nav-item nav-link" href="edit.php">Edit</a>       
-                </div> 
+                </div>  
             </div>
 
             <div class="container">

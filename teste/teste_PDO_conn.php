@@ -1,7 +1,7 @@
 <?php
 
-    require '../php/Classes/connection.php';
+    require_once '../app/Controller/Connection.php';
 
     $connect = new Connection();
 
-    $connect->Connect();
+    var_dump($connect->Connect());

@@ -17,10 +17,12 @@
         $pdo = $conn->Connect();
         //$conn->getPdo()->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-        $stmt = $pdo->prepare('SELECT usr, password FROM tb_users WHERE usr = :usr');
+        $stmt = $pdo->prepare('SELECT * password FROM tb_users WHERE usr = :usr');
         $stmt->execute(array('usr' => $user));
 
-        var_dump($stmt->fetch());
+        
+
+        //var_dump($stmt->fetch());
 
     }
 

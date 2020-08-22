@@ -1,6 +1,6 @@
 <?php
 
-  include "../php/connection.php";
+  //include "../php/connection.php";
   session_cache_expire(30);
   session_start();
   
@@ -8,22 +8,22 @@
     header("Location: ../index.php");
   }
 
-  $usr = $_SESSION['usr'];
+  // $usr = $_SESSION['usr'];
 
-  $sql = "select * from tb_users where usr = '$usr'";
-  $result = mysqli_query($conn, $sql);
-  $data = $result->fetch_array();
+  // $sql = "select * from tb_users where usr = '$usr'";
+  // $result = mysqli_query($conn, $sql);
+  // $data = $result->fetch_array();
 
-  $cod_usr = $data['cod_usr'];
+  // $cod_usr = $data['cod_usr'];
 
 
-  $sql = "select * from tb_users inner join tb_musics on tb_musics.usr_msc = tb_users.cod_usr 
+  // $sql = "select * from tb_users inner join tb_musics on tb_musics.usr_msc = tb_users.cod_usr 
 
-          inner join tb_artists on tb_musics.artist_msc = tb_artists.cod_artist
+  //         inner join tb_artists on tb_musics.artist_msc = tb_artists.cod_artist
 
-          where tb_users.usr = '$usr' and tb_musics.deactive = 1 and tb_artists.usr = $cod_usr order BY tb_artists.artist ASC";
+  //         where tb_users.usr = '$usr' and tb_musics.deactive = 1 and tb_artists.usr = $cod_usr order BY tb_artists.artist ASC";
 
-  $result = mysqli_query($conn, $sql);    
+  // $result = mysqli_query($conn, $sql);    
     
 ?>
 
@@ -59,9 +59,9 @@
                 Settings
                 </button>
                 <div class="dropdown-menu dropdown-menu-left" aria-labelledby="dropdownMenuButton">
-                    <img class= "img-thumbnail rounded float-left" src="../usr/<?php echo $usr;?>/img/img_profile.jpg" style="max-width: 19% !important; padding: 0.10rem !important; margin-left: 5px !important;"/> <h6 class="dropdown-header " style="padding: 0rem !important; margin-left: 3rem !important;"> Singed with <br><strong><?php echo $usr;?></strong></h6>
+                    <img class= "img-thumbnail rounded float-left" src="../usr/<?php //echo $usr;?>/img/img_profile.jpg" style="max-width: 19% !important; padding: 0.10rem !important; margin-left: 5px !important;"/> <h6 class="dropdown-header " style="padding: 0rem !important; margin-left: 3rem !important;"> Singed with <br><strong><?php echo $usr;?></strong></h6>
                     <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="../usr/<?php echo $usr;?>/profile.php">Profile</a>
+                    <a class="dropdown-item" href="../usr/<?php //echo $usr;?>/profile.php">Profile</a>
                     <a class="dropdown-item" href="#">Change password</a>
                     <div class="dropdown-divider"></div>
                     <form action="../php/login/logout.php" method="POST">
@@ -88,17 +88,17 @@
              
             //  $cod = 1;
 
-             while( $data = $result->fetch_array() ){
+             //while( $data = $result->fetch_array() ){
                
             ?>
               <tr>
-                <th scope="row"><?php echo $data['artist'];?></th>
-                <td value="#"><?php echo $data['music'];?></td>
-                <!-- <td><?php echo $data['']?></td> -->
-                <td><audio controls><source src="<?php echo $data['path'];?>" type="audio/mpeg"></audio></td>
+                <th scope="row"><?php //echo $data['artist'];?></th>
+                <td value="#"><?php //echo $data['music'];?></td>
+                <!-- <td><?php //echo $data['']?></td> -->
+                <td><audio controls><source src="<?php //echo $data['path'];?>" type="audio/mpeg"></audio></td>
               </tr>   
             <?php 
-              }
+             // }
             ?>          
             </tbody>
         </table>
