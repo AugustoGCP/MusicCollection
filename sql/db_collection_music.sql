@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 21-Ago-2020 às 13:58
+-- Tempo de geração: 22-Ago-2020 às 22:16
 -- Versão do servidor: 10.4.11-MariaDB
 -- versão do PHP: 7.4.5
 
@@ -68,6 +68,7 @@ CREATE TABLE `tb_frienship` (
   `cod_friendship` int(11) NOT NULL,
   `ordered_friendship` int(11) NOT NULL,
   `recived_friendship` int(11) NOT NULL,
+  `accept` tinyint(1) DEFAULT NULL,
   `date_friendship` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -97,6 +98,8 @@ CREATE TABLE `tb_musics` (
 CREATE TABLE `tb_users` (
   `cod_usr` int(11) NOT NULL,
   `usr` varchar(70) NOT NULL,
+  `full_name` varchar(100) DEFAULT NULL,
+  `birth` date DEFAULT NULL,
   `PASSWORD` varchar(100) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -104,8 +107,8 @@ CREATE TABLE `tb_users` (
 -- Extraindo dados da tabela `tb_users`
 --
 
-INSERT INTO `tb_users` (`cod_usr`, `usr`, `PASSWORD`) VALUES
-(2, 'Administrador', '123456');
+INSERT INTO `tb_users` (`cod_usr`, `usr`, `full_name`, `birth`, `PASSWORD`) VALUES
+(2, 'Administrador', NULL, NULL, '123456');
 
 --
 -- Índices para tabelas despejadas

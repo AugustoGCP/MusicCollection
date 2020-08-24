@@ -32,7 +32,7 @@
 
     <div class='col-md-3'>
       <div class="form-group">
-      <form action="../php/maintence/sing_up.php" method="POST">
+      <form action="../Model/sing_up.php" method="POST">
           <input type="text" name="full_name" placeholder = "Full name...">
           <input type="text" name = "user" placeholder = "Username">
           <input type="text" name="password" placeholder="Password"><br>

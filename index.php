@@ -17,7 +17,7 @@
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-    <link rel="stylesheet" href="style/style.css">
+    <link rel="stylesheet" href="app/View/style/style.css">
 
     <title>Music Collection - DashBoard</title>
   </head>
@@ -32,7 +32,7 @@
         <input type="text" placeholder="User" name="usr"><br/>
         <input type="password" placeholder="Password" name="password"><br/>
         <input type="submit" value="Confirm"><br>
-        <button type="button" class="btn btn-outline-light"><a href="include/sing_up.php">Sing up</a></button>
+        <button type="button" class="btn btn-outline-light"><a href="app/View/sing_up.php">Sing up</a></button>
     </form>
     
     <!-- Optional JavaScript -->

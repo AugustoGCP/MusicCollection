@@ -59,9 +59,9 @@
                 Settings
                 </button>
                 <div class="dropdown-menu dropdown-menu-left" aria-labelledby="dropdownMenuButton">
-                    <img class= "img-thumbnail rounded float-left" src="../usr/<?php //echo $usr;?>/img/img_profile.jpg" style="max-width: 19% !important; padding: 0.10rem !important; margin-left: 5px !important;"/> <h6 class="dropdown-header " style="padding: 0rem !important; margin-left: 3rem !important;"> Singed with <br><strong><?php echo $usr;?></strong></h6>
+                    <img class= "img-thumbnail rounded float-left" src="usr/<?php echo $_SESSION['usr'];?>/img/img_profile.jpg" style="max-width: 19% !important; padding: 0.10rem !important; margin-left: 5px !important;"/> <h6 class="dropdown-header " style="padding: 0rem !important; margin-left: 3rem !important;"> Singed with <br><strong><?php echo $usr;?></strong></h6>
                     <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="../usr/<?php //echo $usr;?>/profile.php">Profile</a>
+                    <a class="dropdown-item" href="../usr/<?php echo $_SESSION['usr'];?>/profile.php">Profile</a>
                     <a class="dropdown-item" href="#">Change password</a>
                     <div class="dropdown-divider"></div>
                     <form action="../Model/logout.php" method="POST">
