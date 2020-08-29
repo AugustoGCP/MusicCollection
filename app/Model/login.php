@@ -9,7 +9,7 @@
 
     if ( (empty($user)) || (empty($password)) ){
 
-        $_SESSION['alert'] = 'Some field was filled incorrect.';
+        $_SESSION['alert'] = "<script>alert('Some field was filled incorrect.')</script>";
         header("Location: ../../index.php");
 
         // echo 'In fact, i wasnt there, i always have been here rsrs';

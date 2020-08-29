@@ -50,9 +50,13 @@
 
         public function createUser(){
 
-            $existUsr = $this->Login();
+            $conn = new Connection();
+            $pdo = $conn->Connect();
 
-            if ($existUsr === false){
+            $sql = $pdo->prepare('select usr, email from tb_users where usr = :usr or email = :email'); 
+            $existUsr = $sql->execute(array('usr'=>$this->__get('user'), 'email'=>$this->__get('password')));
+
+            if ($existUsr){
 
                 $conn = new Connection();
                 $pdo = $conn->Connect();
@@ -74,14 +78,14 @@
                     // COPIA OS ARQUIVOS INICIAIS DE CADA USUAIO PARA A PASTA DO USUARIO
         
                     //COPIA PARA A PASTA DO USUARIO O ARQUIVO PROFILE.PHP
-                    copy("../View/profile.php", "../View/usr/{$this->__get('user')}/profile.php");
+                    //copy("../View/profile.php", "../View/usr/{$this->__get('user')}/profile.php");
                     //COPIA A IMAGEM INICIAL DO 
                     copy("../View/img/img_profile.jpg","../View/usr/{$this->__get('user')}/img/img_profile.jpg");
         
                     $_SESSION['usr'] = $this->__get('user');
                     $_SESSION['alert'] = "<script>alert('Password created sucessfully')</script>";
         
-                    header("Location: ../View/usr/{$this->__get('user')}/profile.php");
+                    header("Location: ../View/profile.php");
         
                 }else{
         
@@ -93,7 +97,7 @@
             }else{
 
                 $_SESSION['alert'] = "<script>alert('This user alredy exist. Please choice another user.')</script>";
-                    header("Location: ../View/sing_up.php");
+                header("Location: ../View/sing_up.php");
 
             }
 

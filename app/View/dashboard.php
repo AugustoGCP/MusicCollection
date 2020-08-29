@@ -8,8 +8,8 @@
     }
 
     if (!isset($_SESSION['usr'])){
-        //header("Location: ../../index.php");
-        echo $_SESSION['usr'];
+        header("Location: ../../index.php");
+        //echo $_SESSION['usr'];
     }
 
 ?>
@@ -27,38 +27,58 @@
     <title>Music Collection - DashBoard</title>
   </head>
   <body>
-        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-            <a class="navbar-brand" href="#">Music Collection</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-                <div class="navbar-nav">
-                    <a class="nav-item nav-link " href="music.php">Musics</a>
-                    <a class="nav-item nav-link" href="artist.php">Artists</a>
-                    <a class="nav-item nav-link" href="album.php">Albums <span class="sr-only">(current)</span></a>
-                    <a class="nav-item nav-link" href="edit.php">Edit</a>       
-                </div>  
-            </div>
+        <div class="container-fluid">
+            <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+                <a class="navbar-brand" href="#">Music Collection</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                    <div class="navbar-nav">
+                        <a class="nav-item nav-link " href="music.php">Musics</a>
+                        <a class="nav-item nav-link" href="artist.php">Artists</a>
+                        <a class="nav-item nav-link" href="album.php">Albums <span class="sr-only">(current)</span></a>
+                        <a class="nav-item nav-link" href="edit.php">Edit</a>       
+                    </div>  
+                </div>
 
-            <div class="container">
-                <div class="dropdown">
-                    <button class="btn btn-light dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Settings
-                    </button>
-                    <div class="dropdown-menu dropdown-menu-left" aria-labelledby="dropdownMenuButton">
-                        <a href="#"><img class= "img-thumbnail rounded float-left" src="usr/<?php echo $_SESSION['usr'];?>/img/img_profile.jpg" style="max-width: 19% !important; padding: 0.10rem !important; margin-left: 5px !important;"/> <h6 class="dropdown-header " style="padding: 0rem !important; margin-left: 3rem !important;"> Singed with <br><strong><?php echo $_SESSION['usr'];?></strong></h6></a>
-                        <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="../usr/<?php echo $_SESSION['usr'];?>/profile.php">Profile</a>
-                        <a class="dropdown-item" href="#">Change password</a>
-                        <div class="dropdown-divider"></div>
-                        <form action="../Model/logout.php" method="POST">
-                            <input class="dropdown-item" type="submit" value="Log Out">
-                        </form> 
+                <div class="container">
+                    <div class="dropdown">
+                        <button class="btn btn-light dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Settings
+                        </button>
+                        <div class="dropdown-menu dropdown-menu-left" aria-labelledby="dropdownMenuButton">
+                            <a href="#"><img class= "img-thumbnail rounded float-left" src="usr/<?php echo $_SESSION['usr'];?>/img/img_profile.jpg" style="max-width: 19% !important; padding: 0.10rem !important; margin-left: 5px !important;"/> <h6 class="dropdown-header " style="padding: 0rem !important; margin-left: 3rem !important;"> Singed with <br><strong><?php echo $_SESSION['usr'];?></strong></h6></a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="profile.php">Profile</a>
+                            <a class="dropdown-item" href="#">Change password</a>
+                            <div class="dropdown-divider"></div>
+                            <form action="../Model/logout.php" method="POST">
+                                <input class="dropdown-item" type="submit" value="Log Out">
+                            </form> 
+                        </div>
                     </div>
                 </div>
+
+                <!-- <form class="form-inline my-2 my-lg-0">
+                    <input class="form-control mr-sm-2" type="search" placeholder="Pesquisar" aria-label="Pesquisar">
+                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Pesquisar</button>
+              </form> -->
+
+
+            </nav>
+        </div>
+
+        <div class="container-fluid">
+            <div class="row mt-3">
+                <div class="col-sm-2 px-0 mx-3 border">
+                1 de 2
+                </div>
+                <div class="col border mr-3">
+                2 de 2
+                </div>
             </div>
-        </nav>
+        </div>
 
         <!-- Optional JavaScript -->
         <!-- jQuery first, then Popper.js, then Bootstrap JS -->
