@@ -7,6 +7,7 @@
         private $user;
         private $password;
         private $full_name;
+        private $email;
         private $birth;
 
         public function __construct(){
@@ -61,8 +62,8 @@
                 $conn = new Connection();
                 $pdo = $conn->Connect();
 
-                $sql = $pdo->prepare('insert into tb_users (usr, full_name, password, birth) values (:user, :full_name, :password, :birth)');
-                $result = $sql->execute(array('user'=>$this->__get('user'), 'full_name'=>$this->__get('full_name'), 'password'=>$this->__get('password'), 'birth'=>$this->__get('birth')));
+                $sql = $pdo->prepare('insert into tb_users (usr, full_name, password, birth) values (:user, :email, :password)');
+                $result = $sql->execute(array('user'=>$this->__get('user'), 'password'=>$this->__get('password'), 'email'=>$this->__get('email')));
 
                 if ($result){
 
@@ -113,8 +114,11 @@
 
                 $sql = $pdo->prepare('SELECT * FROM tb_users WHERE usr = :usr and password = :password');
                 $sql->execute(array('usr' => $this->__get('user'), 'password'=> $this->__get('password'))); 
+                $full_name = $sql->fetch();
 
-                return $sql->rowCount();
+
+                $return = array('rowCount' => $sql->rowCount(), 'full_name' => $full_name['full_name']);
+                return $return;
 
             }
         }

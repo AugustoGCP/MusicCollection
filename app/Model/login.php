@@ -19,8 +19,9 @@
         $usr = new User($user, $password);
         $result = $usr->Login();
 
-        if ($result === 1){
+        if ($result['rowCount'] === 1){
             $_SESSION['usr'] = $user;
+            $_SESSION['full_name'] = $result['full_name'];
             header('Location: ../View/dashboard.php');
                         
         }else{

@@ -142,8 +142,8 @@
                               <a class="nav-link disabled" href="#">Desativado</a>
                             </li>
                           </ul>
-                    </div>
-                  </div>
+                        </div>
+                      </div>
 
             <div class="col border mr-3">
 

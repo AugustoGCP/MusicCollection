@@ -38,8 +38,8 @@
                         <a class="nav-item nav-link " href="music.php">Musics</a>
                         <a class="nav-item nav-link" href="artist.php">Artists</a>
                         <a class="nav-item nav-link" href="album.php">Albums <span class="sr-only">(current)</span></a>
-                        <a class="nav-item nav-link" href="edit.php">Edit</a>       
-                    </div>  
+                        <a class="nav-item nav-link" href="edit.php">Edit</a>   
+                    </div>
                 </div>
 
                 <div class="container">
@@ -60,12 +60,12 @@
                     </div>
                 </div>
 
-                <!-- <form class="form-inline my-2 my-lg-0">
-                    <input class="form-control mr-sm-2" type="search" placeholder="Pesquisar" aria-label="Pesquisar">
-                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Pesquisar</button>
-              </form> -->
-
-
+                <div class="container">                                        
+                    <form class="form-inline">
+                        <input class="form-control mr-sm-2" type="search" placeholder="Pesquisar" aria-label="Pesquisar">
+                        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Pesquisar</button>
+                    </form> 
+                </div>
             </nav>
         </div>
 
